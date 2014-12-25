@@ -1,0 +1,77 @@
+<head>
+	<title>Editgo</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
+	<link rel="import" href="bower_components/core-menu/core-menu.html">
+	<link rel="import" href="bower_components/core-item/core-item.html">
+	<link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
+	<link rel="import" href="bower_components/paper-input/paper-input.html">
+	<link rel="import" href="bower_components/paper-button/paper-button.html">
+	<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+  	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+	<core-scaffold>
+		<core-header-panel navigation flex mode="seamed">
+			<core-toolbar><span class="glyphicon glyphicon-comment"></span>Editgo</core-toolbar>
+			{{> story}}
+		</core-header-panel>
+		<div tool>Title</div>
+		<div>
+			{{> content}}
+			{{> edit}}
+		</div>
+		{{> createstory2}}
+	</core-scaffold>
+</body>
+
+<template name="createstory2">
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      	<paper-input label="Enter title" class="createstory" floatingLabel="true"></paper-input><br/><br/>
+	 		<center><paper-button raised class="save green">Save</paper-button></center><br/>
+	    </div>
+	  </div>
+	</div>
+</template>
+
+<template name="story"><!-- Will be Removed -->
+	<core-menu theme="core-light-theme">
+		{{#each stories}}
+			<core-item icon="settings" label="{{title}}"></core-item>	
+		{{/each}}			
+	</core-menu>
+	<center><paper-icon-button icon="add" class="addstory" title="Add more" data-toggle="modal" data-target="#myModal"></paper-icon-button></center>
+</template>
+
+<template name="createstory">
+	<paper-dialog layered="true" backdrop transition="core-transition-center">		
+	 	<paper-input label="Enter title" class="createstory" floatingLabel="true"></paper-input><br/><br/>
+	 	<center><paper-button raised class="save green">Save</paper-button></center>
+	</paper-dialog>
+</template>
+
+<template name="content">
+	<div class="content">
+		<ul>
+		 {{#each paragraphs}}
+		 	<li>{{content}}</li>
+		 {{/each}}
+		 </ul>
+	 </div>
+</template>
+
+<template name="edit">
+	<div class="bottom">
+		<form class="new-para">
+			<div class="bottom-left">
+				<textarea id="text"></textarea>
+			</div>			
+			<div class="bottom-right" id="submit"><span class="glyphicon glyphicon-play"></span></div>
+		</form>  
+	</div>
+</template>
+
