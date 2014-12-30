@@ -1,38 +1,46 @@
 <head>
 	<title>Editgo</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
-	<link rel="import" href="bower_components/core-menu/core-menu.html">
-	<link rel="import" href="bower_components/core-item/core-item.html">
-	<link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
-	<link rel="import" href="bower_components/paper-input/paper-input.html">
-	<link rel="import" href="bower_components/paper-button/paper-button.html">
-	<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="import" href="/bower_components/core-scaffold/core-scaffold.html">
+	<link rel="import" href="/bower_components/core-menu/core-menu.html">
+	<link rel="import" href="/bower_components/core-item/core-item.html">
+	<link rel="import" href="/bower_components/paper-dialog/paper-dialog.html">
+	<link rel="import" href="/bower_components/paper-input/paper-input.html">
+	<link rel="import" href="/bower_components/paper-button/paper-button.html">
+	<link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
   	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
+</body>
+
+<template name="ApplicationLayout">
 	<core-scaffold>
 		<core-header-panel navigation flex mode="seamed">
 			<core-toolbar><span class="glyphicon glyphicon-comment"></span>Editgo</core-toolbar>
-			{{> story}}
+			{{> yield "aside"}}
 		</core-header-panel>
-		<div tool>Title</div>
-		<div>
-			{{> content}}
-			{{> edit}}
-		</div>
-		{{> createstory2}}
+		{{> yield}}
+		{{> yield "bottom"}}
 	</core-scaffold>
-</body>
+</template>
 
-<template name="createstory2">
+<template name="modal">
 	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="createModal" tabindex="-1" role="dialog">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
-	      	<paper-input label="Enter title" class="createstory" floatingLabel="true"></paper-input><br/><br/>
+	      	<paper-input label="Enter title" class="title" floatingLabel="true"></paper-input><br/><br/>
 	 		<center><paper-button raised class="save green">Save</paper-button></center><br/>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	 		<center><br/>Are you sure you want to remove ? <br/><br/><paper-button raised class="yes green">Yes</paper-button>&nbsp;&nbsp;<paper-button raised class="no" data-dismiss="modal">No</paper-button></center><br/>
 	    </div>
 	  </div>
 	</div>
@@ -41,37 +49,41 @@
 <template name="story"><!-- Will be Removed -->
 	<core-menu theme="core-light-theme">
 		{{#each stories}}
-			<core-item icon="settings" label="{{title}}"></core-item>	
+			<core-item icon="chevron-right" label="{{title}}" data-id="{{_id}}" class="story"></core-item>
 		{{/each}}			
 	</core-menu>
-	<center><paper-icon-button icon="add" class="addstory" title="Add more" data-toggle="modal" data-target="#myModal"></paper-icon-button></center>
-</template>
-
-<template name="createstory">
-	<paper-dialog layered="true" backdrop transition="core-transition-center">		
-	 	<paper-input label="Enter title" class="createstory" floatingLabel="true"></paper-input><br/><br/>
-	 	<center><paper-button raised class="save green">Save</paper-button></center>
-	</paper-dialog>
+	<center><paper-icon-button icon="add" class="addstory" title="Add more" data-toggle="modal" data-target="#createModal"></paper-icon-button></center>
 </template>
 
 <template name="content">
-	<div class="content">
-		<ul>
-		 {{#each paragraphs}}
-		 	<li>{{content}}</li>
-		 {{/each}}
-		 </ul>
-	 </div>
-</template>
-
-<template name="edit">
-	<div class="bottom">
-		<form class="new-para">
-			<div class="bottom-left">
-				<textarea id="text"></textarea>
-			</div>			
-			<div class="bottom-right" id="submit"><span class="glyphicon glyphicon-play"></span></div>
-		</form>  
+	<div tool>
+		<div class="title">
+			{{title}}
+		</div>
+		<div class="icons">
+			<paper-icon-button icon="delete" class="deletestory" title="Remove" data-toggle="modal" data-target="#deleteModal"></paper-icon-button>	
+		</div>
 	</div>
+	<div>
+		<div class="content">
+			<ul>
+			 {{#each paragraphs}}
+			 	<li>{{content}}</li>
+			 {{/each}}
+			 </ul>
+		 </div>
+		 <div class="bottom">
+			<form class="new-para">
+				<div class="bottom-left">
+					<textarea id="text"></textarea>
+				</div>
+				<paper-button class="bottom-right" id="submit">
+					<core-icon icon="send"></core-icon>
+				</paper-button>			
+				<!--<div class="bottom-right" id="submit"><span class="glyphicon glyphicon-play"></span></div>-->
+			</form>  
+		</div>
+	</div>
+	 {{> contentFor region="aside" template="story"}}
+	 {{> contentFor region="bottom" template="modal"}}
 </template>
-

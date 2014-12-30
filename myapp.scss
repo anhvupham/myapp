@@ -1,17 +1,39 @@
 $green: #237B4A;
+$orange: #FF6B00;
+$white: #fff;
+$silver: #B3B1B1;
+$blue: #1F91E2;
+$light-blue: #50A7E5;
+$black: #000;
+$break-small: 600px;
 body {
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
 	core-scaffold {
+		[tool] {
+			width: 100%;
+			.title {
+				float: left;
+			}
+			.icons {
+				float: right;
+				height: 40px;
+			}
+		}
 		.modal-content {
 			padding: 10px;
-			.createstory {
-				width: 100%;
+			paper-input {
+				&.title {
+					width: 100%;
+				}
 			}
 		}
 		&::shadow core-drawer-panel {
 			core-header-panel {
 				core-toolbar {
 					background-color: $green;
-					color: #fff;
+					color: $white;
 					font-size: 26px;
 				}
 			}
@@ -20,11 +42,11 @@ body {
 		font-weight: 400;
 		core-header-panel {
 			.addstory {
-				color: #B3B1B1;
+				color: $silver;
 				&:hover {
-					color: $green;
+					color: $white;
 					cursor: pointer;
-					background: #eee;
+					background: $orange;
 					border-radius: 50%;
 				}
 				&::shadow #icon {
@@ -34,12 +56,36 @@ body {
 			}
 			core-toolbar {
 				background-color: $green;
-				color: #fff;
+				color: $white;
 				font-size: 26px;
+			}
+			core-menu {
+				margin: 10px 0 0 0;
+				core-item {
+					background-color: $white;
+					// transition-property: background-color, color;
+					// 		transition-duration: 200ms;
+					color: $black;
+					&::shadow #icon {
+						margin: 0 2px 0 4px;
+					}
+					&:hover {
+						background-color: $orange;
+						color: $white;
+						cursor: pointer;
+						// transition-property: background-color, color;
+						// 		transition-duration: 200ms;
+					}
+				}
 			}
 		}
 		.content {
+			margin: 10px;
 			padding: 10px;
+			background-color: $white;
+			border-radius: 5px;
+			min-height: 500px;
+			line-height: 18px;
 			ul {
 				//font-size: 0;
 				li {
@@ -51,18 +97,21 @@ body {
 		paper-button {
 			&.green {
 				background-color: $green;
-				color: #fff;
+				color: $white;
 			}
 		}
 		.bottom {
-			position: absolute;
+			position: fixed;
 			bottom: 0;
-			width: 100%;
+			width: calc(100% - 256px);
 			display: block;
+			@media screen and (max-width:$break-small) {
+				width: 100%;
+			}
 			.new-para {
 				.bottom-left {
 					float: left;
-					width: calc(100% - 50px);
+					width: calc(100% - 72px);
 					textarea {
 						display: block;
 						border: none;
@@ -70,15 +119,21 @@ body {
 						font-size: 12px;
 						width: 100%;
 						padding: 2px 5px;
+						resize: none;
 					}
 				}
 				.bottom-right {
 					text-align: center;
-					width: 50px;
+					width: 72px;
 					height: 40px;
 					float: left;
-					background-color: #1F91E2;
-					color: #fff;
+					background-color: $white;
+					//color: $white;
+					margin: 0;
+					border-radius: 0;
+					core-icon {
+						height: 20px;
+					}
 					span {
 						position: relative;
 						top: 50%;
@@ -86,7 +141,7 @@ body {
 						font-size: 20px;
 					}
 					&:hover {
-						background-color: #50A7E5;
+						//background-color: $light-blue;
 						cursor: pointer;
 					}
 				}

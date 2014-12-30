@@ -1,43 +1,104 @@
 if (Meteor.isClient) {
-    Template.content.helpers({
-        paragraphs: function() {
-            return Paragraphs.find({});
-        }
-    });
-
-    Template.story.helpers({
-        stories: function() {
-            return Stories.find({});
-        }
-    });
-
     Template.story.events({
-        // 'click .addstory': function(event, template) {
-        //     //Blaze.render(Template.createstory, document.body);
-        //     $('paper-dialog')[0].toggle();
-        // }
-    });
-
-    Template.createstory.events({
-        'click core-overlay-layer overlay-host paper-dialog paper-button': function(event, template) {
-            console.log('aaaa')
+        'click .story': function(event, template) {
+            var id = $(event.target).attr('data-id')
+            Router.go('/story/' + id);
         }
     });
 
-    Template.edit.events({
+    Template.modal.events({
+        'click #createModal .save': function(event, template) {
+            var title = $('.modal-content .title').val();
+            Stories.insert({
+                title: title,
+                createdOn: new Date(),
+                paragraphs: []
+            });
+            $('#createModal').modal('hide');
+        },
+        'click #deleteModal .yes': function(event, template) {
+            Stories.remove({
+                _id: template.data._id
+            });
+            $('#deleteModal').modal('hide');
+        },
+    });
+
+    Template.content.events({
         'click #submit': function(event, template) {
-            // var text = event.target.text.value;
-            console.log($('#text').val())
             var text = $('#text').val();
             text = text.charAt(text.length - 1) == '.' ? text : text + '.';
 
-            Paragraphs.insert({
+            var story = Stories.findOne({
+                _id: template.data._id
+            });
+
+            if (!story.paragraphs) {
+                story.paragraphs = [];
+            }
+
+            story.paragraphs.push({
                 content: text,
                 createdOn: new Date()
             });
-            // Clear form 
+
+            Stories.update({
+                _id: template.data._id
+            }, story);
+
             $('#text').val('');
         }
+    });
+
+    Router.route('/', function() { //home page route
+        this.render('story', {
+            to: 'aside',
+            data: function() {
+                return {
+                    stories: function() {
+                        return Stories.find();
+                    }
+                }
+            }
+        });
+
+        this.render('modal', {
+            to: 'bottom'
+        });
+    });
+
+    Router.route('/story/:_id', function() { //story content route
+        var story = Stories.findOne({
+            _id: this.params._id
+        });
+
+        this.render('story', {
+            to: 'aside',
+            data: function() {
+                return {
+                    stories: function() {
+                        return Stories.find();
+                    }
+                }
+            }
+        });
+
+        this.render('content', {
+            data: function() {
+                return story;
+            }
+        });
+
+        this.render('modal', {
+            data: function() {
+                return story;
+            },
+            to: 'bottom'
+        });
+    });
+
+    Router.configure({ //config layout default for all page
+        layoutTemplate: 'ApplicationLayout'
     });
 }
 
