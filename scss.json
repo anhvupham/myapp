@@ -1,7 +1,7 @@
 {
-  "enableAutoprefixer": true,
-  "autoprefixerOptions": {
-      "browsers": ["> 5%"],
-      "cascade": false
-  }
+	"enableAutoprefixer": true,
+	"autoprefixerOptions": {
+		"browsers": ["last 2 versions"],
+		"cascade": false
+	}
 }

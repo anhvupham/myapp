@@ -49,9 +49,10 @@
 <template name="story"><!-- Will be Removed -->
 	<core-menu theme="core-light-theme">
 		{{#each stories}}
-			<core-item icon="chevron-right" label="{{title}}" data-id="{{_id}}" class="story"></core-item>
+			<core-item label="{{title}}" data-id="{{_id}}" class="story"></core-item>
 		{{/each}}			
 	</core-menu>
+	<br/>
 	<center><paper-icon-button icon="add" class="addstory" title="Add more" data-toggle="modal" data-target="#createModal"></paper-icon-button></center>
 </template>
 
@@ -66,11 +67,9 @@
 	</div>
 	<div>
 		<div class="content">
-			<ul>
-			 {{#each paragraphs}}
-			 	<li>{{content}}</li>
-			 {{/each}}
-			 </ul>
+			{{#each paragraphs}}
+				{{content}}
+			{{/each}}
 		 </div>
 		 <div class="bottom">
 			<form class="new-para">
