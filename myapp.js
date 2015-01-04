@@ -8,13 +8,17 @@ if (Meteor.isClient) {
 
     Template.modal.events({
         'click #createModal .save': function(event, template) {
-            var title = $('.modal-content .title').val();
+            var title = $(' #createModal .modal-content .title').val();
             Stories.insert({
                 title: title,
                 createdOn: new Date(),
                 paragraphs: []
             });
             $('#createModal').modal('hide');
+            var savebtn = $(' #createModal .modal-content .save');
+
+            savebtn.attr('disabled', true); //add disable state to the save button
+            $(' #createModal .modal-content .title').val(''); //set input to blank   
         },
         'click #deleteModal .yes': function(event, template) {
             Stories.remove({
@@ -22,12 +26,24 @@ if (Meteor.isClient) {
             });
             $('#deleteModal').modal('hide');
         },
+        'keyup #createModal .title': function(event, template) {
+            var title = $(' #createModal .modal-content .title').val(),
+                savebtn = $(' #createModal .modal-content .save');
+
+            if (title.length > 0) {
+                savebtn.removeAttr('disabled');
+            } else {
+                savebtn.attr('disabled', true);
+            }
+        }
     });
 
     Template.content.events({
         'click #submit': function(event, template) {
-            var text = $('#text').val();
-            text = text.charAt(text.length - 1) == '.' ? text : text + '.';
+            var text = $('.bottom .new-para #text').val(),
+                savebtn = $('.bottom .new-para #submit');
+
+            text = text.charAt(text.length - 1) == '.' ? text : text + '.'; //concat the text
 
             var story = Stories.findOne({
                 _id: template.data._id
@@ -37,16 +53,27 @@ if (Meteor.isClient) {
                 story.paragraphs = [];
             }
 
-            story.paragraphs.push({
+            story.paragraphs.push({ //add new text
                 content: text,
                 createdOn: new Date()
             });
 
-            Stories.update({
+            Stories.update({ //update the story
                 _id: template.data._id
             }, story);
 
-            $('#text').val('');
+            $('.bottom .new-para #text').val('');
+            savebtn.attr('disabled', true);
+        },
+        'keyup .bottom .new-para #text': function(event, template) {
+            var title = $('.bottom .new-para #text').val(),
+                savebtn = $('.bottom .new-para #submit');
+
+            if (title.length > 0) {
+                savebtn.removeAttr('disabled');
+            } else {
+                savebtn.attr('disabled', true);
+            }
         }
     });
 
