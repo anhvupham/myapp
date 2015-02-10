@@ -1,0 +1,24 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1, IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editgo</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="import" href="/bower_components/core-scaffold/core-scaffold.html">
+    <link rel="import" href="/bower_components/core-menu/core-menu.html">
+    <link rel="import" href="/bower_components/core-item/core-item.html">
+    <link rel="import" href="/bower_components/paper-input/paper-input.html">
+    <link rel="import" href="/bower_components/paper-button/paper-button.html">
+    <link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+</head>
+
+<template name="master">
+    <core-scaffold>
+        <core-header-panel navigation flex mode="seamed">
+            <core-toolbar><img src="/images/logo3.png" alt="yoo." class="logo" /></core-toolbar>
+            {{> yield "aside"}}
+        </core-header-panel>
+        {{> yield}} {{> yield "bottom"}}
+    </core-scaffold>
+</template>

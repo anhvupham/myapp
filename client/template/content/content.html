@@ -1,0 +1,26 @@
+<template name="content">
+    <div tool>
+        <div class="icons">
+            <paper-icon-button icon="delete" class="deletestory" title="Remove" data-toggle="modal" data-target="#deleteModal"></paper-icon-button>
+        </div>
+    </div>
+    <div>
+        <div class="content">
+            <div class="title">
+                {{title}}
+            </div>
+            <br/> {{#each paragraphs}} {{content}} {{/each}}
+        </div>
+        <div class="bottom">
+            <form class="new-para">
+                <div class="bottom-left">
+                    <textarea id="text"></textarea>
+                </div>
+                <paper-button class="bottom-right" id="submit" disabled>
+                    <core-icon icon="send"></core-icon>
+                </paper-button>
+                <!--<div class="bottom-right" id="submit"><span class="glyphicon glyphicon-play"></span></div>-->
+            </form>
+        </div>
+    </div>    
+</template>

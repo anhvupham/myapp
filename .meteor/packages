@@ -12,4 +12,6 @@ fourseven:scss
 
 underscore
 iron:router
-bootboxjs
+accounts-ui
+accounts-password
+accounts-facebook

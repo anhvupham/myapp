@@ -1,0 +1,50 @@
+<template name="modal">
+    <!-- Modal -->
+    <div class="modal fade" id="createModal" role="dialog" aria-labelledby="createModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Enter the title</h4>
+                </div>
+                <div class="modal-body">
+                    <paper-input class="title"></paper-input>
+                    <br/>
+                    <br/>
+                    <center>
+                        <paper-button class="save green" disabled>
+                            <core-icon icon="check" aria-label="check"></core-icon>
+                            Save
+                        </paper-button>
+                        <paper-button class="no" data-dismiss="modal">
+                            <core-icon icon="clear" aria-label="check"></core-icon>
+                            Cancel
+                        </paper-button>
+                    </center>
+                    <br/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Are you sure you want to remove ?</h4>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <paper-button class="yes green">
+                            <core-icon icon="check" aria-label="check"></core-icon>Yes</paper-button>&nbsp;&nbsp;
+                        <paper-button class="no" data-dismiss="modal">
+                            <core-icon icon="clear" aria-label="check"></core-icon>No</paper-button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

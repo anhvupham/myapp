@@ -1,4 +1,5 @@
 $green: #4caf50;
+$dark-green: #388E3C;
 $orange: #ffbb33;
 $white: #fff;
 $silver: #B3B1B1;
@@ -8,6 +9,7 @@ $black: #000;
 $bodytext: #212121;
 $border: #EBEBEB;
 $paperline: #d9eaf3;
+$light-grey: #F5F5F5;
 $grey: #E0E0E0;
 $darkgrey: #757575;
 $red: #F44336;
@@ -19,6 +21,49 @@ body {
     padding: 0px;
     color: $bodytext;
     core-scaffold {
+        .fab {
+            position: relative;
+            display: inline-block;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            color: #fff;
+            overflow: hidden;
+            transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition-delay: 0.2s;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+        }
+        .fab.red {
+            background-color: #d23f31;
+        }
+        .fab:active {
+            box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+            transition-delay: 0s;
+        }
+        .fab > core-icon {
+            margin: 16px;
+        }
+        .fab > core-icon::shadow path {
+            fill: #fff;
+        }
+        .story {
+            list-style: none;
+            list-style-type: none;
+            margin-left: 0;
+            padding-left: 0;
+            .item {
+                cursor: pointer;
+                background-color: $white;
+                padding: 15px;
+                margin: 15px;
+                font-size: 18px;
+                border-radius: 3px;
+                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
         [tool] {
             width: 100%;
             .icons {
@@ -58,6 +103,7 @@ body {
                 //color: $white;
                 //background-color: $red;
                 border-radius: 50%;
+                border: 1px solid;
                 &:hover {
                     cursor: pointer;
                     background: $grey;
@@ -68,34 +114,38 @@ body {
                 }
             }
             core-toolbar {
-                background-color: $green;
+                background-color: $dark-green;
                 color: $white;
-                font-size: 23px;
+                .logo {
+                    width: 53%;
+                    margin-left: 50px;
+                }
             }
             core-menu {
                 margin: 10px 0 0 0;
                 core-item {
+                    //font-size: 16px;
                     background-color: $white;
                     // transition-property: background-color, color;
-                    // 		transition-duration: 200ms;
+                    //      transition-duration: 200ms;
                     color: $bodytext;
                     padding-left: 10px;
-                    border-left: 3px solid $white;
-                    &::shadow #icon {
-                        margin: 0 2px 0 4px;
-                    }
+                    //border-left: 3px solid $white;
+                    // &::shadow #icon {
+                    //     margin: 0 2px 0 4px;
+                    // }
                     &:hover {
-                        background-color: $grey;
+                        background-color: $light-grey;
                         //color: $white;
-                        border-left: 3px solid $darkgrey;
+                        //border-left: 3px solid $darkgrey;
                         cursor: pointer;
                         // transition-property: background-color, color;
-                        // 		transition-duration: 200ms;
+                        //      transition-duration: 200ms;
                     }
                     &[active] {
                         //background-color: $grey;
-                        border-left: 3px solid $red;
-                        color: $red;
+                        //border-left: 3px solid $light-blue;
+                        color: $light-blue;
                     }
                 }
             }
@@ -110,7 +160,7 @@ body {
             //radius
             border-radius: 5px;
             //shadow
-            box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
             //background and line
             background: $white;
             background: -webkit-gradient(linear, 0 0, 0 100%, from($paperline), color-stop(4%, $white)) 0 4px;

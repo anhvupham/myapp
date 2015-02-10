@@ -1,0 +1,15 @@
+<template name="story">
+    <ul class="story">
+        {{#each stories}}
+        <li class="item"><a data-id="{{_id}}">{{title}}</a>
+        </li>
+        {{/each}}
+    </ul>
+    <br/>
+    <center>
+        <div class="fab red" data-toggle="modal" data-target="#createModal">
+            <core-icon icon="add"></core-icon>
+            <paper-ripple class="circle recenteringTouch" fit></paper-ripple>
+        </div>
+    </center>
+</template>
