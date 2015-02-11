@@ -1,0 +1,26 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1, IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoo. Connect people</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+</head>
+
+<template name="home">
+    {{> alert}}
+    {{#unless resetPassword}}
+        {{#unless currentUser}}
+            {{#unless showForgotPassword}}
+                {{> signIn}}
+                {{> signUp}}
+            {{else}}
+                {{> forgotPassword}}
+            {{/unless}}
+        {{else}}
+            {{> signOut}}
+        {{/unless}}
+    {{else}}
+        {{> resetPassword}}
+    {{/unless}}
+</template>

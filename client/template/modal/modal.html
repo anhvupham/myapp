@@ -13,7 +13,7 @@
                     <br/>
                     <br/>
                     <center>
-                        <paper-button class="save green" disabled>
+                        <paper-button class="save blue" disabled>
                             <core-icon icon="check" aria-label="check"></core-icon>
                             Save
                         </paper-button>
@@ -38,7 +38,26 @@
                 </div>
                 <div class="modal-body">
                     <center>
-                        <paper-button class="yes green">
+                        <paper-button class="yes blue">
+                            <core-icon icon="check" aria-label="check"></core-icon>Yes</paper-button>&nbsp;&nbsp;
+                        <paper-button class="no" data-dismiss="modal">
+                            <core-icon icon="clear" aria-label="check"></core-icon>No</paper-button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="logoutModal" role="dialog" aria-labelledby="logoutModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Are you sure you want to logout ?</h4>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <paper-button class="yes blue">
                             <core-icon icon="check" aria-label="check"></core-icon>Yes</paper-button>&nbsp;&nbsp;
                         <paper-button class="no" data-dismiss="modal">
                             <core-icon icon="clear" aria-label="check"></core-icon>No</paper-button>

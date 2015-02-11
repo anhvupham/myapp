@@ -1,19 +1,24 @@
 Router.route('/', function () { //home page route
-    this.render('menu', {
-        to: 'aside'
-    });
-    this.render('story', {
-        data: function () {
-            return {
-                stories: function () {
-                    return Stories.find();
+    if (Meteor.user()) {
+        this.render('menu', {
+            to: 'aside'
+        });
+        this.render('story', {
+            data: function () {
+                return {
+                    stories: function () {
+                        return Stories.find();
+                    }
                 }
             }
-        }
-    });
-    this.render('modal', {
-        to: 'bottom'
-    });
+        });
+        this.render('modal', {
+            to: 'bottom'
+        });
+        this.layout('master');
+    } else {
+        this.layout('home');
+    }
 });
 Router.route('/story/:_id', function () { //story content route
     var story = Stories.findOne({
@@ -33,7 +38,8 @@ Router.route('/story/:_id', function () { //story content route
         },
         to: 'bottom'
     });
+    this.layout('master');
 });
 Router.configure({ //config layout default for all page
-    layoutTemplate: 'master'
+    layoutTemplate: 'home'
 });
