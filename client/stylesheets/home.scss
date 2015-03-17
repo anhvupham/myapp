@@ -1,0 +1,212 @@
+@import 'vars';
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: "Open Sans", Arial, sans-serif;
+}
+header {
+    height: 60px;
+    font-size: 18px;
+    color: $white;
+    transition: height 0.2s;
+    background-color: $dark-green;
+    .logo {
+        display: block;
+        width: 127px;
+        margin-right: 20px;
+        img {
+            width: 127px;
+        }
+    }
+    .navbar {
+        z-index: 1;
+        border: none;
+        .container-fluid {
+            padding: 0;
+            margin: 0;
+        }
+        .navbar-header {
+            height: 60px;
+            margin: 0;
+            padding: 0 20px;
+        }
+        .navbar-toggle {
+            margin-right: 0;
+            line-height: 0;
+        }
+        .navbar-collapse {
+            background-color: $dark-green;
+            margin-right: 0;
+            margin-left: 0;
+            line-height: 0;
+            border-top: 0px;
+        }
+        .navbar-nav {
+            li > a {
+                line-height: 30px;
+                color: $white;
+                font-size: 1.7rem;
+                letter-spacing: 1.5px;
+                transition: all 500ms;
+                transition-delay: 100ms;
+                &:hover {
+                    background-color: $darker-green;
+                }
+                &:focus {
+                    background-color: $darker-green;
+                }
+            }
+        }
+    }
+}
+section {
+    padding: 80px 30px;
+    &.account {
+        background-color: $green;
+        .text {
+            text-align: center;
+            color: $white;
+            margin: 30px 10px;
+            h1 {
+                font-weight: 300;
+            }
+            p {
+                margin: 20px 0;
+            }
+        }
+        .sign-in {
+            .seperate {
+                border-left: solid 1px $white;
+                margin: 0px 10px 0 14px;
+            }
+            .show-forgot-password, .show-signup {
+                color: $white;
+                font-size: $font-xsmall;
+                &:hover {
+                    // text-decoration: none;
+                    // color: $dark-green;
+                }
+            }
+            .center {
+                margin-top: 30px;
+                text-align: center;
+            }
+            paper-button {
+                background-color: $dark-green;
+                color: $white;
+            }
+            paper-input-decorator {
+                color: $white;
+                &::shadow .unfocused-underline {
+                    background-color: $white;
+                }
+                &::shadow .focused-underline {
+                    background-color: $white;
+                }
+                &::shadow .label-text {
+                    color: $white;
+                }
+                input {
+                    &::-webkit-input-placeholder {
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+    &.features {
+        img {            
+            &.monitor {
+                width: 200px;
+                left: 166px;
+                bottom: 0;
+                transition:all 0.5s ease-in-out;
+            }
+            &.tablet {
+                width: 100px;
+                left: 292px;
+                bottom: 0;
+            }
+            &.phone {
+                width: 50px;
+                left: 374px;
+                bottom: 0;    
+                transition:all 0.5s ease-in-out;            
+            }
+            &.users {
+                width: 200px;
+                bottom: 0;  
+                left: 196px;
+            }
+            &.usersfront {
+                width: 200px;
+                bottom: 0;  
+                left: 199px;
+                top: 35px;
+                transition:all 0.5s ease-in-out;
+            }
+            &.comments {
+                width: 150px;
+                left: 217px;
+                transition:all 0.5s ease-in-out;
+            }
+            &.commentsfront {
+                width: 150px;
+                left: 213px;
+                bottom: 13px;
+                transition:all 0.5s ease-in-out;
+            }
+        }
+        .cross {
+            height: 164px;
+            position: relative;
+            img {
+                position: absolute;
+            }
+            &:hover {
+                img {
+                    &.monitor {
+                        left: 85px;
+                    }
+                    &.phone {
+                        left: 400px;
+                    }
+                }
+            }
+        }
+        .users {
+            height: 164px;
+            position: relative;
+            img {
+                position: absolute;
+            }
+            &:hover {
+                img {
+                    &.usersfront {
+                        top: 24px;
+                    }
+                }
+            }
+        }
+        .comments {
+            height: 164px;
+            position: relative;
+            img {
+                position: absolute;
+            }
+            &:hover {
+                img {
+                    &.comments {
+                        left: 239px;
+                    }
+                    &.commentsfront {
+                        left: 190px;
+                    }
+                }
+            }
+        }
+        .text {
+            margin-top: 30px;
+        }
+    }
+}

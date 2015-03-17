@@ -3,24 +3,87 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1, IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yoo. Connect people</title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+    <link rel="import" href="/bower_components/core-header-panel/core-header-panel.html">
+    <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
 </head>
 
 <template name="home">
-    {{> alert}}
-    {{#unless resetPassword}}
-        {{#unless currentUser}}
-            {{#unless showForgotPassword}}
-                {{> signIn}}
-                {{> signUp}}
-            {{else}}
-                {{> forgotPassword}}
-            {{/unless}}
-        {{else}}
-            {{> signOut}}
-        {{/unless}}
-    {{else}}
-        {{> resetPassword}}
-    {{/unless}}
+    <header>
+        <nav class="navbar">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <core-icon-button icon="menu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"></core-icon-button>
+                    <a class="logo" href="#"><img src="/images/logo3.png" alt="yoo." />
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Features</a>
+                        </li>
+                        <li><a href="#">Screen shots</a>
+                        </li>
+                        <li><a href="#">Testimonials</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </header>
+    <section class="account">
+        <div class="row">
+            <div class="col-lg-4 col-xs-12 col-lg-offset-1">
+                <div class="text">
+                    <h1>The perfect template to showcase your awesome product and service.</h1>
+                    <p>Aenean condimentum, lacus sit amet luctus lobortis, dolores et quas molestias excepturi enim tellus ultrices elit, amet consequat enim elit noneas sit amet luctu. Quis nostrum exercitationem ullam corporis suscipit laboriosam.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-lg-offset-2 col-xs-12">
+                {{> alert}} {{#unless resetPassword}} {{#unless showForgotPassword}} {{#unless showSignUp}} {{> signIn}} {{else}} {{> signUp}} {{/unless}} {{else}} {{> forgotPassword}} {{/unless}} {{else}} {{> resetPassword}} {{/unless}}
+            </div>
+        </div>
+    </section>
+    <section class="features">
+        <div class="row">
+            <div class="col-lg-4 col-xs-12">
+                <center>
+                    <div class="image cross">
+                        <img class="monitor" src="images/monitor.svg" alt="" />
+                        <img class="tablet" src="images/tablet.svg" alt="" />
+                        <img class="phone" src="images/phone.svg" alt="" />
+                    </div>
+                    <div class="text">
+                        Cross platform, easy to use by any devices that you want.
+                    </div>
+                </center>
+            </div>
+            <div class="col-lg-4 col-xs-12">
+                <center>
+                    <div class="image users">
+                        <img class="users" src="images/users.svg" alt="" />
+                        <img class="usersfront" src="images/users-front.svg" alt="" />
+                    </div>
+                    <div class="text">
+                        Make friends, invite or join them to edit the stories.
+                    </div>
+                </center>
+            </div>
+            <div class="col-lg-4 col-xs-12">
+                <center>
+                    <div class="image comments">
+                        <img class="comments" src="images/comments.svg" alt="" />
+                        <img class="commentsfront" src="images/commentsfront.svg" alt="" />
+                    </div>
+                    <div class="text">
+                        Comments on other posts.
+                    </div>
+                </center>
+            </div>
+        </div>
+    </section>
 </template>
