@@ -50,11 +50,15 @@
 
 <template name="forgotPassword">
     <div class="forgot-password" id="forgotPassword">
-        <a class="return-to-sign-in" href="javascript:void(0);" id="returnToSignIn">Return</a>
-        <form action="/forgot" class="forgot-password-form" id="forgotPasswordForm" method="post">
-            <input class="email" id="forgotPasswordEmail" type="text" name="email" placeholder="Email Address">
-            <input class="btn-submit" type="submit" value="Send">
-        </form>
+        <paper-icon-button icon="arrow-back" id="returnToSignIn"></paper-icon-button>
+        <paper-input-decorator id="forgotPasswordEmail" label="Email Address" floatinglabel layout vertical>
+            <input is="core-input" class="email">
+        </paper-input-decorator>
+        <div class="center">
+            <paper-button class="btn-submit">
+                Send
+            </paper-button>
+        </div>
     </div>
     <!-- end .forgot-password -->
 </template>

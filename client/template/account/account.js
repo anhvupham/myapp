@@ -92,12 +92,16 @@ Template.signIn.events({
         Session.set('showForgotPassword', true);
         return false;
     },
+    'click #showSignup': function (e, t) {
+        console.log('aaaa');
+        Session.set('showSignUp', true);
+        return false;
+    }
 });
 Template.forgotPassword.events({
-    'submit #forgotPasswordForm': function (e, t) {
+    'click #forgotPassword .btn-submit': function (e, t) {
         e.preventDefault();
-        var forgotPasswordForm = $(e.currentTarget),
-            email = trimInput(forgotPasswordForm.find('#forgotPasswordEmail').val().toLowerCase());
+        var email = trimInput($(' #forgotPassword .email ').val().toLowerCase());
         if (isNotEmpty(email) && isEmail(email)) {
             Accounts.forgotPassword({
                 email: email
@@ -129,6 +133,9 @@ Template.home.helpers({
     },
     showForgotPassword: function () {
         return Session.get('showForgotPassword');
+    },
+    showSignUp: function () {
+        return Session.get('showSignUp');
     }
 });
 Template.resetPassword.events({

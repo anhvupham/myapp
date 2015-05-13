@@ -74,53 +74,56 @@ section {
                 margin: 20px 0;
             }
         }
+        paper-button {
+            background-color: $dark-green;
+            color: $white;
+        }
+        paper-icon-button {
+            color: $white;
+        }
+        paper-input-decorator {
+            color: $white;
+            &::shadow .unfocused-underline {
+                background-color: $white;
+            }
+            &::shadow .focused-underline {
+                background-color: $white;
+            }
+            &::shadow .label-text {
+                color: $white;
+            }
+            input {
+                &::-webkit-input-placeholder {
+                    color: $white;
+                }
+            }
+        }
+        .center {
+            margin-top: 30px;
+            text-align: center;
+        }
+        a {
+            color: $white;
+            font-size: $font-xsmall;
+            &:hover {
+                // text-decoration: none;
+                // color: $dark-green;
+            }
+        }
         .sign-in {
             .seperate {
                 border-left: solid 1px $white;
                 margin: 0px 10px 0 14px;
             }
-            .show-forgot-password, .show-signup {
-                color: $white;
-                font-size: $font-xsmall;
-                &:hover {
-                    // text-decoration: none;
-                    // color: $dark-green;
-                }
-            }
-            .center {
-                margin-top: 30px;
-                text-align: center;
-            }
-            paper-button {
-                background-color: $dark-green;
-                color: $white;
-            }
-            paper-input-decorator {
-                color: $white;
-                &::shadow .unfocused-underline {
-                    background-color: $white;
-                }
-                &::shadow .focused-underline {
-                    background-color: $white;
-                }
-                &::shadow .label-text {
-                    color: $white;
-                }
-                input {
-                    &::-webkit-input-placeholder {
-                        color: $white;
-                    }
-                }
-            }
         }
     }
     &.features {
-        img {            
+        img {
             &.monitor {
                 width: 200px;
                 left: 166px;
                 bottom: 0;
-                transition:all 0.5s ease-in-out;
+                transition: all 0.5s ease-in-out;
             }
             &.tablet {
                 width: 100px;
@@ -130,31 +133,31 @@ section {
             &.phone {
                 width: 50px;
                 left: 374px;
-                bottom: 0;    
-                transition:all 0.5s ease-in-out;            
+                bottom: 0;
+                transition: all 0.5s ease-in-out;
             }
             &.users {
                 width: 200px;
-                bottom: 0;  
+                bottom: 0;
                 left: 196px;
             }
             &.usersfront {
                 width: 200px;
-                bottom: 0;  
+                bottom: 0;
                 left: 199px;
                 top: 35px;
-                transition:all 0.5s ease-in-out;
+                transition: all 0.5s ease-in-out;
             }
             &.comments {
-                width: 150px;
+                width: 198px;
                 left: 217px;
-                transition:all 0.5s ease-in-out;
+                transition: all 0.5s ease-in-out;
             }
             &.commentsfront {
-                width: 150px;
+                width: 198px;
                 left: 213px;
                 bottom: 13px;
-                transition:all 0.5s ease-in-out;
+                transition: all 0.5s ease-in-out;
             }
         }
         .cross {
@@ -197,7 +200,7 @@ section {
             &:hover {
                 img {
                     &.comments {
-                        left: 239px;
+                        left: 257px;
                     }
                     &.commentsfront {
                         left: 190px;
